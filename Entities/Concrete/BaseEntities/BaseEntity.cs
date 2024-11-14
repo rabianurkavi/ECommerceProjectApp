@@ -9,6 +9,6 @@ namespace Entities.Concrete.BaseEntities
 {
     public class BaseEntity : IEntity
     {
-        public int ID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int ID { get; set; }
     }
 }
