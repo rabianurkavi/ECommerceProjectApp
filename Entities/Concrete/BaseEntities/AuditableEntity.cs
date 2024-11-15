@@ -12,6 +12,6 @@ namespace Entities.Concrete.BaseEntities
         public int? UpdatedId { get; set; }
         public DateTime? UpdatedDate {  get; set; }
         public int CreatedId { get; set; }
-        public DateTime CreatedDate {  get; set; }
+        public DateTime CreatedDate {  get; set; } = DateTime.Now;
     }
 }
