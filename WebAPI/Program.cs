@@ -1,3 +1,4 @@
+using Business.Mapping;
 using DataAccess.Concrete.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ECommerceProjectAppDbContext>();
+
+MapsterConfig.RegisterMappings();
 
 var app = builder.Build();
 
