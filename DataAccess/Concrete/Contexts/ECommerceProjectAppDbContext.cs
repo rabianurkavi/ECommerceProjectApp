@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace DataAccess.Concrete.Contexts
         {
             optionsBuilder.UseSqlServer("server=RABIA\\SQLEXPRESS;Database=ECommerceProjectDB;Trusted_Connection=True;");
         }
+        DbSet<User> Users { get; set; }
     }
 }
