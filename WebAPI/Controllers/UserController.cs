@@ -15,6 +15,7 @@ namespace WebAPI.Controllers
             _userService=userService;
         }
         [HttpGet]
+        [Route("[action]")]
         public async Task<IActionResult> GetList()
         {
             var result = await _userService.GetListAsync();
@@ -22,7 +23,8 @@ namespace WebAPI.Controllers
                 return Ok(result);
             return BadRequest();
         }
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("[action]/{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _userService.GetByIdAsync(id);
@@ -32,6 +34,7 @@ namespace WebAPI.Controllers
         }
         //FromBody ile otomatik serilazation yaparız yani gelen JSON verisi Dto ya dönüşür.
         [HttpPost]
+        [Route("[action]")]
         public async Task<IActionResult> Add([FromBody] UserAddDto userAddDto)
         {
             var result = await _userService.AddAsync(userAddDto);
@@ -40,6 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
         [HttpPut]
+        [Route("[action]")]
         public async Task<IActionResult> Update([FromBody] UserUpdateDto userUpdateDto)
         {
             var result = await _userService.UpdateAsync(userUpdateDto);
@@ -48,6 +52,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
         [HttpDelete]
+        [Route("[action]/{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _userService.DeleteAsync(id);
