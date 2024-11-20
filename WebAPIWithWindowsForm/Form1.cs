@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Entities.Dtos.UserDtos;
+using System.Net.Http.Json;
 
 namespace WebAPIWithWindowsForm
 {
-    public partial class Form1 : Form
+    public partial class frmKullanici : Form
     {
-        public Form1()
+        string url = "http://localhost:5065/api/User/GetList";
+        public frmKullanici()
         {
             InitializeComponent();
+        }
+
+        private async void frmKullanici_Load(object sender, EventArgs e)
+        {
+            using (HttpClient httpClient= new HttpClient() )
+            {
+                var users= await httpClient.GetFromJsonAsync<List<UserDetailDto>>(new Uri(url));
+                dataGridView1.DataSource = users;
+            }
+
         }
     }
 }
