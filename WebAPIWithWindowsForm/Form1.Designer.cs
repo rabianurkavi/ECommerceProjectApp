@@ -70,20 +70,23 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 322);
+            dataGridView1.Location = new Point(12, 265);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(835, 150);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1051, 246);
             dataGridView1.TabIndex = 2;
+            dataGridView1.DoubleClick += dataGridView1_DoubleClick;
             // 
             // btnEkle
             // 
-            btnEkle.Location = new Point(280, 236);
+            btnEkle.Location = new Point(901, 53);
             btnEkle.Name = "btnEkle";
             btnEkle.Size = new Size(98, 33);
             btnEkle.TabIndex = 3;
             btnEkle.Text = "Ekle";
             btnEkle.UseVisualStyleBackColor = true;
+            btnEkle.Click += btnEkle_Click;
             // 
             // dtpDateOfBirth
             // 
@@ -201,27 +204,29 @@
             // 
             // btnDüzenle
             // 
-            btnDüzenle.Location = new Point(401, 236);
+            btnDüzenle.Location = new Point(901, 92);
             btnDüzenle.Name = "btnDüzenle";
             btnDüzenle.Size = new Size(107, 33);
             btnDüzenle.TabIndex = 19;
             btnDüzenle.Text = "Düzenle";
             btnDüzenle.UseVisualStyleBackColor = true;
+            btnDüzenle.Click += btnDüzenle_Click;
             // 
             // btnSil
             // 
-            btnSil.Location = new Point(532, 236);
+            btnSil.Location = new Point(901, 139);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(102, 33);
             btnSil.TabIndex = 20;
             btnSil.Text = "Sil";
             btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
             // 
             // frmKullanici
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(859, 532);
+            ClientSize = new Size(1075, 532);
             Controls.Add(btnSil);
             Controls.Add(btnDüzenle);
             Controls.Add(label8);
