@@ -40,6 +40,25 @@ namespace WebAPIWithCoreMvc.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> EditUser(int id)
+        {
+            var user = await _httpClient.GetFromJsonAsync<UserUpdateDto>(url + "User/GetById/" + id);
+            UserUpdateViewModel userUpdateViewModel = user.Adapt<UserUpdateViewModel>(); 
+            ViewBag.GenderList = GenderFill();
+            return View(userUpdateViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUser(int userId, UserUpdateViewModel userUpdateViewModel)
+        {
+            var userUpdateDto = userUpdateViewModel.Adapt<UserUpdateDto>();
+            HttpResponseMessage responseMessage = await _httpClient.PutAsJsonAsync(url + "User/Update", userUpdateDto);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
         private List<Gender> GenderFill()
         {
             List<Gender> genders = new List<Gender>();
