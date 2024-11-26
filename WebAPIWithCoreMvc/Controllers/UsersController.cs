@@ -1,4 +1,5 @@
 ﻿using Entities.Dtos.UserDtos;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using WebAPIWithCoreMvc.ViewModels;
@@ -31,17 +32,7 @@ namespace WebAPIWithCoreMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(UserAddViewModel userAddViewModel)
         {
-            UserAddDto userAddDto = new UserAddDto()
-            {
-                FirstName = userAddViewModel.FirstName,
-                Gender = userAddViewModel.GenderID == 1 ? true : false,
-                LastName = userAddViewModel.LastName,
-                Adress = userAddViewModel.Adress,
-                DateOfBirth = userAddViewModel.DateOfBirth,
-                Email = userAddViewModel.Email,
-                Password = userAddViewModel.Password,
-                UserName = userAddViewModel.UserName,
-            };
+            var userAddDto = userAddViewModel.Adapt<UserAddDto>();
             HttpResponseMessage responseMessage = await _httpClient.PostAsJsonAsync(url + "User/Add", userAddDto);
             if(responseMessage.IsSuccessStatusCode)
             {
