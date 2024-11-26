@@ -16,7 +16,8 @@ namespace Business.Mapping
             TypeAdapterConfig<User, UserAddDto>.NewConfig();
             TypeAdapterConfig<User, UserDto>.NewConfig();
             TypeAdapterConfig<User, UserUpdateDto>.NewConfig();
-            TypeAdapterConfig<User, UserDetailDto>.NewConfig();
+            TypeAdapterConfig<User, UserDetailDto>.NewConfig()
+                    .Map(dest => dest.Gender, src => src.Gender ? "Kadın" : "Erkek");
         }
     }
 }
