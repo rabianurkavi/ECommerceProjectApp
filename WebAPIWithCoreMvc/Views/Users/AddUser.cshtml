@@ -60,13 +60,13 @@
 
             <div class="form-group">
 
-                <label asp-for="GenderID">Cinsiyet:</label>
+                <label asp-for="GenderId">Cinsiyet:</label>
 
-                <select class="form-control" asp-for="GenderID" asp-items="@(new SelectList
+                <select class="form-control" asp-for="GenderId" asp-items="@(new SelectList
 
      (@ViewBag.GenderList,"Id","GenderName"))"></select>
 
-                <span asp-validation-for="GenderID" class="text-danger"></span>
+                <span asp-validation-for="GenderId" class="text-danger"></span>
 
             </div>
 
