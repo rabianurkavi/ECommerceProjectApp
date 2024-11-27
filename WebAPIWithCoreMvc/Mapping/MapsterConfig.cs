@@ -18,6 +18,9 @@ namespace WebAPIWithCoreMvc.Mapping
 
             TypeAdapterConfig<UserUpdateViewModel, UserUpdateDto>.NewConfig()
              .Map(dest => dest.Gender, src => src.GenderId == 1);
+
+            TypeAdapterConfig<UserDeleteViewModel, UserDto>.NewConfig()
+             .Map(dest => dest.Gender, src => src.GenderId == 1);
         }
     }
 }
