@@ -1,4 +1,4 @@
-﻿using Entities.Concrete.BaseEntities;
+﻿using Core.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Abstract
+namespace Entities.Abstract.Enums
 {
-    
-    public interface IEntity
+    public enum Genders
     {
-        public int ID { get; set; }
+        Famele = 1,
+        Male = 0
     }
 }
