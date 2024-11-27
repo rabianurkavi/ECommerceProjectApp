@@ -15,12 +15,12 @@ namespace WebAPIWithCoreMvc.Controllers
         #region Constructor
         public UsersController(HttpClient httpClient)
         {
-            _httpClient=httpClient;
+            _httpClient = httpClient;
         }
         #endregion
         public async Task<IActionResult> Index()
         {
-            var users = await _httpClient.GetFromJsonAsync<List<UserDetailDto>>(url+"User/GetList");
+            var users = await _httpClient.GetFromJsonAsync<List<UserDetailDto>>(url + "User/GetList");
             return View(users);
         }
         [HttpGet]
@@ -34,7 +34,7 @@ namespace WebAPIWithCoreMvc.Controllers
         {
             var userAddDto = userAddViewModel.Adapt<UserAddDto>();
             HttpResponseMessage responseMessage = await _httpClient.PostAsJsonAsync(url + "User/Add", userAddDto);
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
@@ -44,7 +44,7 @@ namespace WebAPIWithCoreMvc.Controllers
         public async Task<IActionResult> EditUser(int id)
         {
             var user = await _httpClient.GetFromJsonAsync<UserUpdateDto>(url + "User/GetById/" + id);
-            UserUpdateViewModel userUpdateViewModel = user.Adapt<UserUpdateViewModel>(); 
+            UserUpdateViewModel userUpdateViewModel = user.Adapt<UserUpdateViewModel>();
             ViewBag.GenderList = GenderFill();
             return View(userUpdateViewModel);
         }
@@ -58,6 +58,13 @@ namespace WebAPIWithCoreMvc.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            HttpResponseMessage response = await _httpClient.DeleteAsync($"{url}User/Delete/{id}");
+            return RedirectToAction("Index");
+
         }
         private List<Gender> GenderFill()
         {
